@@ -16,7 +16,7 @@ def home():
         :method: GET:
         :return:
         """
-    with open('README.md', 'r') as f:
+    with open('help.md', 'r') as f:
         return f.read()
 
 
