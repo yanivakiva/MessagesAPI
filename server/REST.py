@@ -131,5 +131,16 @@ def sign_up():
     return jsonify({'success signing up': {'user': user}})
 
 
+@app.route('/', methods=['POST'], strict_slashes=False)
+def home():
+    """
+    This is the signUp route endpoint.
+    this route takes the following parameters: user, password and creates a user if the query is valid.
+    :param: POST:
+    :return:
+    """
+    return jsonify({'hello': 'world'})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
