@@ -114,7 +114,7 @@ def delete_massage():
         :return:
         """
     res = dict(request.args)
-    if not all(x in res.keys() for x in ['user', 'password', 'messagee_id']):
+    if not all(x in res.keys() for x in ['user', 'password', 'message_id']):
         return jsonify({'error': {'status_code': 406, 'description': 'the query you have entered is not valid'}})
 
     user, password, message_id = res['user'], res['password'], res['message_id']
