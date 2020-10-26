@@ -42,9 +42,13 @@ def get_message():
     user, password = res['user'], res['password']
     pass_hash = md5(password.encode()).hexdigest()
     message = ResultsPipelines().read_message(user, pass_hash)
-    post = {'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
-            'subject': message.subject, 'creation_date': message.creation_date}
-    return jsonify(post)
+    if message:
+        post = {'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
+                'subject': message.subject, 'creation_date': message.creation_date}
+    
+        return jsonify(post)
+    else:
+        return jsonify({'no unread mails': True})
 
 
 @app.route('/getAllMessages', methods=['POST'], strict_slashes=False)
@@ -64,9 +68,13 @@ def get_all_messages():
     user, password = res['user'], res['password']
     pass_hash = md5(password.encode()).hexdigest()
     messages = ResultsPipelines().get_all_messages(user, pass_hash)
-    post = [{'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
-            'subject': message.subject, 'creation_date': message.creation_date} for message in messages]
-    return jsonify(post)
+    if messages:
+        post = [{'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
+                 'subject': message.subject, 'creation_date': message.creation_date} for message in messages]
+        return jsonify(post)
+    else:
+        return jsonify({'no mails': True})
+        
 
 
 @app.route('/getUnreadMessages', methods=['POST'], strict_slashes=False)
@@ -86,9 +94,12 @@ def get_unread_messages():
     user, password = res['user'], res['password']
     pass_hash = md5(password.encode()).hexdigest()
     messages = ResultsPipelines().get_unread_messages(user, pass_hash)
-    post = [{'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
+    if messages:
+        post = [{'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
              'subject': message.subject, 'creation_date': message.creation_date} for message in messages]
-    return jsonify(post)
+        return jsonify(post)
+    else:
+        return jsonify({'no unread messages': True})
 
 
 @app.route('/deleteMessage', methods=['POST'], strict_slashes=False)
