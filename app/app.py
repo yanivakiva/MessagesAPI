@@ -3,7 +3,7 @@ import sys
 sys.path.append(f'{os.getcwd()}/../')
 from __init__ import app
 from hashlib import md5
-from server.pipelines import ResultsPipelines
+from app.pipelines import ResultsPipelines
 from flask import jsonify, request
 from datetime import datetime
 

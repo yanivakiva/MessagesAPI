@@ -1,4 +1,4 @@
-from server.models import Messages, Users
+from app.models import Messages, Users
 from sqlalchemy import create_engine
 from sqlalchemy.pool import SingletonThreadPool
 from sqlalchemy.orm import sessionmaker
