@@ -8,6 +8,18 @@ from flask import jsonify, request
 from datetime import datetime
 
 
+@app.route('/', methods=['GET'], strict_slashes=False)
+def home():
+    """
+    This is the writeMessage route endpoint.
+    this route takes the following parameters: user, password, receiver, message, subject
+        :method: POST:
+        :return:
+        """
+    with open('README.md', 'r') as f:
+        return f.read()
+
+
 @app.route('/writeMessage', methods=['POST'], strict_slashes=False)
 def write_message():
     """

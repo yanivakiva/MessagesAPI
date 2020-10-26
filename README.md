@@ -58,14 +58,35 @@ to run the flask framework run flask run in the terminal. <br></br>
 
 How to use
 ============
-### cURL
-(to use the commands to query the api the flask app needs to be running)
-you can use the cURL command through the terminal to query the api. <br></br>
+### Postman
+you can query the Messages REST API using postman
+<br></br>
 e.g.:
 <br></br>
-to interact with getAddress: curl -F "file=@</PATH/TO/YOUR/CSV/FILE>" http://127.0.0.1:5000/api/getAddress  <br></br>
-to interact with getResult: curl http://127.0.0.1:5000/api/getResult?result_id=<RESULT_ID> 
+to interact with writeMessage: <br></br>
+<img src="https://i.imgur.com/kQsO1oW.png" width=500 />
 
+<br></br>
+to interact with readMessage: <br></br>
+<img src="https://i.imgur.com/eB1BJuH.png" width=500 />
+
+<br></br>
+to interact with getAllMessages: <br></br>
+<img src="https://i.imgur.com/D4EUkeC.png" width=500 />
+
+<br></br>
+to interact with getUnreadMessages: <br></br>
+<img src="https://i.imgur.com/trklb2u.png" width=500 />
+
+<br></br>
+to interact with deleteMessage: <br></br>
+<img src="https://i.imgur.com/FMZVkHx.png" width=500 />
+
+<br></br>
+to interact with signUp: <br></br>
+<img src="https://i.imgur.com/rZAApOk.png" width=500 />
+
+<br></br>
 
 Compatibility
 =============
