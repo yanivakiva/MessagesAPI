@@ -8,7 +8,7 @@ from flask import jsonify, request
 from datetime import datetime
 
 
-@app.route('/writeMessage', methods=['GET'], strict_slashes=False)
+@app.route('/writeMessage', methods=['POST'], strict_slashes=False)
 def write_message():
     """
     This is the writeMessage route endpoint.
@@ -25,7 +25,7 @@ def write_message():
     return jsonify({'success writing message': {'to': receiver, 'message': message, 'subject': subject}})
 
 
-@app.route('/readMessage', methods=['GET'], strict_slashes=False)
+@app.route('/readMessage', methods=['POST'], strict_slashes=False)
 def get_message():
     """
     This is the readMessage route endpoint.
@@ -47,7 +47,7 @@ def get_message():
     return jsonify(post)
 
 
-@app.route('/getAllMessages', methods=['GET'], strict_slashes=False)
+@app.route('/getAllMessages', methods=['POST'], strict_slashes=False)
 def get_all_messages():
     """
     This is the getAllMessages route endpoint.
@@ -69,7 +69,7 @@ def get_all_messages():
     return jsonify(post)
 
 
-@app.route('/getUnreadMessages', methods=['GET'], strict_slashes=False)
+@app.route('/getUnreadMessages', methods=['POST'], strict_slashes=False)
 def get_unread_messages():
     """
     This is the getUnreadMessages route endpoint.
@@ -91,7 +91,7 @@ def get_unread_messages():
     return jsonify(post)
 
 
-@app.route('/deleteMessage', methods=['GET'], strict_slashes=False)
+@app.route('/deleteMessage', methods=['POST'], strict_slashes=False)
 def delete_massage():
     """
     This is the deleteMessage route endpoint.
@@ -112,7 +112,7 @@ def delete_massage():
     return jsonify({'success deleting message': {'message_id': message_id, 'user': user}})
 
 
-@app.route('/signUp', methods=['GET'], strict_slashes=False)
+@app.route('/signUp', methods=['POST'], strict_slashes=False)
 def sign_up():
     """
     This is the signUp route endpoint.

@@ -42,5 +42,4 @@ class Users(db.Model):
 
 
 if __name__ == '__main__':
-    db.session.query(Messages).delete()
-    db.session.commit()
+    pass
