@@ -112,7 +112,7 @@ def delete_massage():
     return jsonify({'success deleting message': {'message_id': message_id, 'user': user}})
 
 
-@app.route('/signUp', methods=['POST'], strict_slashes=False)
+@app.route('/signUp', methods=['GET'], strict_slashes=False)
 def sign_up():
     """
     This is the signUp route endpoint.
