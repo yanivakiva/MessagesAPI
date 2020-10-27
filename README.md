@@ -53,13 +53,20 @@ How to install
 ==============
 clone the reopsitory into your directory. <br></br>
 cd into the server directory and run the following command in the terminal: <br></br>
-export FLASK_APP=REST.py <br></br>
+export FLASK_APP=app.py <br></br>
 to run the flask framework run flask run in the terminal. <br></br>
 
 How to use
 ============
 ### Postman
-you can query the Messages REST API using postman
+you can query the Messages REST API using postman <br></br>
+at: http://127.0.0.1:5000 if your'e running the flask server locally. <br></br>
+the flask server is also hosted at Heroku at: <br></br> 
+https://akiva-messages-api.herokuapp.com/
+<br></br>
+and can be queried like so:
+
+
 <br></br>
 e.g.:
 <br></br>
