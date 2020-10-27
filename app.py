@@ -33,8 +33,11 @@ def write_message():
         return jsonify({'error': {'status_code': 406, 'description': 'the query you have entered is not valid'}})
     user, password, receiver, message, subject = res['user'], res['password'], res['receiver'], res['message'], res['subject']
     pass_hash = md5(password.encode()).hexdigest()
-    ResultsPipelines().write_message(user, pass_hash, receiver, message, subject, creation_date=datetime.now())
-    return jsonify({'success writing message': {'to': receiver, 'message': message, 'subject': subject}})
+    res = ResultsPipelines().write_message(user, pass_hash, receiver, message, subject, creation_date=datetime.now())
+    if res:
+        return jsonify({'success writing message': {'to': receiver, 'message': message, 'subject': subject}})
+    else:
+        return jsonify({'error': {'user_error': 407, 'description': 'the user/password you have entered is not valid'}})
 
 
 @app.route('/readMessage', methods=['POST'], strict_slashes=False)
@@ -59,8 +62,10 @@ def get_message():
                 'subject': message.subject, 'creation_date': message.creation_date}
     
         return jsonify(post)
-    else:
+    elif not message and type(message) is not bool:
         return jsonify({'no unread mails': True})
+    else:
+        return jsonify({'error': {'user_error': 407, 'description': 'the user/password you have entered is not valid'}})
 
 
 @app.route('/getAllMessages', methods=['POST'], strict_slashes=False)
@@ -84,9 +89,10 @@ def get_all_messages():
         post = [{'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
                  'subject': message.subject, 'creation_date': message.creation_date} for message in messages]
         return jsonify(post)
-    else:
+    elif not messages and type(messages) is not bool:
         return jsonify({'no mails': True})
-        
+    else:
+        return jsonify({'error': {'user_error': 407, 'description': 'the user/password you have entered is not valid'}})
 
 
 @app.route('/getUnreadMessages', methods=['POST'], strict_slashes=False)
@@ -110,8 +116,10 @@ def get_unread_messages():
         post = [{'sender': message.sender, 'receiver': message.receiver, 'message': message.message,
              'subject': message.subject, 'creation_date': message.creation_date} for message in messages]
         return jsonify(post)
-    else:
+    elif not messages and type(messages) is not bool:
         return jsonify({'no unread messages': True})
+    else:
+        return jsonify({'error': {'user_error': 407, 'description': 'the user/password you have entered is not valid'}})
 
 
 @app.route('/deleteMessage', methods=['POST'], strict_slashes=False)
@@ -131,8 +139,11 @@ def delete_massage():
 
     user, password, message_id = res['user'], res['password'], res['message_id']
     pass_hash = md5(password.encode()).hexdigest()
-    ResultsPipelines().delete_message(user, pass_hash, message_id)
-    return jsonify({'success deleting message': {'message_id': message_id, 'user': user}})
+    res = ResultsPipelines().delete_message(user, pass_hash, message_id)
+    if res:
+        return jsonify({'success deleting message': {'message_id': message_id, 'user': user}})
+    else:
+        return jsonify({'error': {'user_error': 407, 'description': 'the user/password you have entered is not valid'}})
 
 
 @app.route('/signUp', methods=['POST'], strict_slashes=False)
@@ -150,9 +161,12 @@ def sign_up():
 
     user, password = res['user'], res['password']
     pass_hash = md5(password.encode()).hexdigest()
-    ResultsPipelines().sign_up(user, pass_hash)
-    return jsonify({'success signing up': {'user': user}})
+    res = ResultsPipelines().sign_up(user, pass_hash)
+    if res:
+        return jsonify({'success signing up': {'user': user}})
+    else:
+        return jsonify({'error': {'user_error': 408, 'description': 'the user you have entered already exists'}})
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

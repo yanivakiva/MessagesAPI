@@ -81,6 +81,10 @@ class ResultsPipelines:
         if self.check_user_password(user, password):
             result = Messages(user, receiver, message, subject, creation_date)
             self._insert_item(result)
+            return True
+        else:
+            return False
+
 
     def read_message(self, user, password):
         """
@@ -96,6 +100,8 @@ class ResultsPipelines:
             if message:
                 self._update_message(user=user, message_id=message.id)
             return message
+        else:
+            return False
 
     def check_user_password(self, user, password):
         """
@@ -120,6 +126,8 @@ class ResultsPipelines:
             session = self.Session()
             self._update_message(user)
             return session.query(Messages).filter(Messages.receiver == user).all()
+        else:
+            return False
 
     def get_unread_messages(self, user, password):
         """
@@ -134,6 +142,7 @@ class ResultsPipelines:
             results = session.query(Messages).filter(Messages.receiver == user).filter(Messages.read == 0).all()
             self._update_message(user)
             return results
+        return False
 
     def delete_message(self, user, password, message_id):
         """
@@ -146,6 +155,8 @@ class ResultsPipelines:
         """
         if self.check_user_password(user, password):
             self._delete_message(user, message_id)
+            return True
+        return False
 
     def sign_up(self, user, password):
         """
@@ -158,6 +169,8 @@ class ResultsPipelines:
         if not self.Session().query(Users).filter(Users.user == user).first():
             user = Users(user, password)
             self._insert_item(user)
+            return True
+        return False
 
 
 if __name__ == '__main__':
