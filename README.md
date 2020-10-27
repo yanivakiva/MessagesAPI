@@ -49,6 +49,12 @@ and returns a dictionary. <br></br>
 if the parameters are valid, the api will return a dictionary reporting that signup was successful. <br></br>
 if not, it will report the query was not valid.
 
+How to install
+==============
+clone the reopsitory into your directory. <br></br>
+cd into the server directory and run the following command in the terminal: <br></br>
+export FLASK_APP=app.py <br></br>
+to run the flask framework run flask run in the terminal. <br></br>
 
 How to use
 ============
@@ -88,4 +94,14 @@ to interact with signUp: <br></br>
 <img src="https://i.imgur.com/rZAApOk.png" width=500 />
 
 <br></br>
+
+Compatibility
+=============
+Messages's rest api requires Python 3.6+
+
+
+Requirements
+===========
+flask, flask-alchemy, SQLAlchemy
+
 

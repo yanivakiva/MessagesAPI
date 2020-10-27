@@ -70,16 +70,6 @@ if not, it will report the query was not valid.
 
 <br></br>
 
-#How to install
-
-<br></br>
-
-clone the reopsitory into your directory. <br></br>
-cd into the server directory and run the following command in the terminal: <br></br>
-export FLASK_APP=REST.py <br></br>
-to run the flask framework run flask run in the terminal. <br></br>
-<br></br>
-
 #How to use
 
 <br></br>
@@ -87,7 +77,12 @@ to run the flask framework run flask run in the terminal. <br></br>
 ### Postman
 <br></br>
 
-you can query the Messages REST API using postman
+you can query the Messages REST API using postman <br></br>
+at: http://127.0.0.1:5000 if your'e running the flask server locally. <br></br>
+the flask server is also hosted at Heroku at: <br></br> 
+https://akiva-messages-api.herokuapp.com/
+<br></br>
+and can be queried like so:
 <br></br>
 e.g.:
 <br></br>
@@ -115,19 +110,4 @@ to interact with signUp: <br></br>
 <img src="https://i.imgur.com/rZAApOk.png" width=500 />
 
 <br></br>
-
-#Compatibility
-
-<br></br>
-
-Messages's rest api requires Python 3.6+
-
-<br></br>
-
-#Requirements
-
-<br></br>
-
-flask, flask-alchemy, SQLAlchemy
-
 
