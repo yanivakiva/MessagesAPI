@@ -16,8 +16,7 @@ def home():
         :method: GET:
         :return:
         """
-    with open('help.md', 'r') as f:
-        return f.read()
+    return "CAT,AGS"
 
 
 @app.route('/writeMessage', methods=['POST'], strict_slashes=False)
