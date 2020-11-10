@@ -19,7 +19,7 @@ def home():
     return "CAT,AGS"
 
 @app.route('/gett', methods=['GET'], strict_slashes=False)
-def home():
+def home2():
     """
     This is the home route endpoint.
     this route reads the readme file for better understanding of the methods the api has.
