@@ -18,6 +18,16 @@ def home():
         """
     return "CAT,AGS"
 
+@app.route('/gett', methods=['GET'], strict_slashes=False)
+def home():
+    """
+    This is the home route endpoint.
+    this route reads the readme file for better understanding of the methods the api has.
+        :method: GET:
+        :return:
+        """
+    res = dict(request.args)
+    return jsonify(res)
 
 @app.route('/writeMessage', methods=['POST'], strict_slashes=False)
 def write_message():
